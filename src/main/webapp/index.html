@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>主页</title>
+<script type="text/javascript" src="/static/js/jquery1.8.3.min.js"></script>
+<script type="text/javascript">
+
+function getAll(){
+	$.ajax({
+		type:"get",
+		url:"/product/getAll",
+		success:function(res){
+			alert(res)
+		}
+	});
+}
+
+/* $.getJSON("http://localhost:8080/sqm/shareReport/shareReportFeedback", {number:"123",dealType:"aaa",feedback:"bbb"}, function(json){
+	  alert(json);
+	}); */
+
+
+
+
+$.ajax({
+	type:"post",
+	url:"http://localhost:8080/sqm/shareReport/shareReportFeedback",
+	dataType:"jsonp",
+	data:{number:"123",dealType:"aaa",feedback:"bbb"},
+	success:function(res){
+		console.log(res)
+	}
+}); 
+
+
+</script>
+</head>
+<body>
+主页
+index.html<a href="/logout">注销</a><br/>
+<button type="button" onclick="getAll()">查询</button>
+
+</body>
+</html>

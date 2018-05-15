@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录</title>
+</head>
+<body>
+<form action="/ajaxLogin" method="get" id="form1">
+user:
+<input type="text" name="nickname" id="nickname">
+password:
+<input type="text" name="pswd" id="pswd">
+<input type="button" value="login" id="btn" onclick="login()">
+</form>
+</body>
+<script type="text/javascript" src="/static/js/jquery1.8.3.min.js"></script>
+<script type="text/javascript">
+
+function login(){
+	$.ajax({
+		type:"post",
+		url:"/ajaxLogin",
+		dataType:"json",
+		data:$("#form1").serialize(),
+		success:function(res){
+			if(res.status=="200"){
+				location.href="/index.html";//跳转到主页
+			}else{
+				alert("用户名或密码错误");
+			}
+		}
+		
+	});
+}
+
+</script>
+</html>
